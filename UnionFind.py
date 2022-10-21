@@ -9,6 +9,7 @@ class UnionFind:
             self.root[a] = a
             self.sz[a] = 1
         while self.root[a] != a:
+            self.root[a] = self.root[self.root[a]] # include this line for path compression
             a = self.root[a]
         return a
             
