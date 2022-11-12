@@ -3,7 +3,7 @@ import numpy as np
 # W = input size; F = kernel size; P = padding; S = stride; N = output size
 # N = (W - F + 2 * P) // S + 1
 
-# padding the image & convolution
+# convolution with vectorization
 def filter_image_vec(image, h_filter):
     h_row, h_col = h_filter.shape
     row_padding = int(np.floor(h_row/2))
