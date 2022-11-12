@@ -40,6 +40,25 @@ class QuickSort:
         self.quickSort(A, left, end)
         
 
+    # use last element as the pivot
+    def partition(self, arr, low, high): 
+        i = low
+        pivot = arr[high]     
+        for j in range(low, high): 
+            if arr[j] <= pivot:
+                arr[i], arr[j] = arr[j], arr[i]
+                i += 1
+    
+        arr[i], arr[high] = arr[high], arr[i] 
+        return i
+    
+    def quickSort2(self, arr, low, high): 
+        if low < high: 
+            pi = self.partition(arr, low, high) 
+            self.quickSort2(arr, low, pi - 1) 
+            self.quickSort2(arr, pi + 1, high) 
+                    
+
 # merge sort O(nlogn)
 class MergeSort:        
     def mergesort(self, seq):
@@ -63,3 +82,11 @@ class MergeSort:
         result += left[i:]
         result += right[j:]
         return result
+    
+    
+if __name__ == "__main__":
+    
+    qsort = QuickSort()
+    arr = [10, 7, 8, 9, 1, 5]
+    qsort.quickSort2(arr, 0, len(arr) - 1)
+    print(arr)
